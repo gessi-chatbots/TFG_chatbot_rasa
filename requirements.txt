@@ -1,0 +1,10 @@
+en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.2.0/en_core_web_md-3.2.0-py3-none-any.whl
+rasa==2.8.12
+rasa-sdk==2.8.2
+sanic==20.9.1
+Sanic-Cors==0.10.0.post3
+sanic-jwt==1.6.0
+Sanic-Plugins-Framework==0.9.5
+spacy==3.2.0
+spacy-legacy==3.0.8
+spacy-loggers==1.0.1

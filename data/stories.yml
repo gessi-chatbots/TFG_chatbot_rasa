@@ -27,7 +27,26 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: disable app
+
+- story: disable app happy path
   steps:
   - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: gmail
+  - action: action_search_app
+  - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: camera
+  - action: action_search_app
+  - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: phone
+  - action: action_search_app
+  - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: chrome
   - action: action_search_app

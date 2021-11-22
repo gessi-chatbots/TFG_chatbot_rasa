@@ -50,11 +50,12 @@ class searchApp(Action):
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
          app = next(tracker.get_latest_entity_values("name_app"), None)
+         action = next(tracker.get_latest_entity_values("action"), None)
          print(app)
          if app in APPS_db:
-            txt = "Disabled notifications for app: {app}"
+            txt = "{}d notifications for app: {}".format(action,app)
             dispatcher.utter_message(text=txt)
          else:
-            dispatcher.utter_app_not_found()
-
+            txt = "{} not found in your device".format(app)
+            dispatcher.utter_message(text=txt)
          return []
