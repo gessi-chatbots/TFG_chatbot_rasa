@@ -89,3 +89,13 @@ stories:
       are you a bot?
     intent: bot_challenge
   - action: utter_iamabot
+
+- story: disable app happy path
+  steps:
+  - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: gmail
+  - action: action_search_app
+  - user: |
+      disabled notifications for app: gmail

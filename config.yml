@@ -24,9 +24,12 @@ pipeline:
 #   - name: FallbackClassifier
 #     threshold: 0.3
 #     ambiguity_threshold: 0.1
+
+
+
+
     - name: "SpacyNLP"
       model: "en_core_web_md"
-
       # when retrieving word vectors, this will decide if the casing
       # of the word is relevant. E.g. `hello` and `Hello` will
       # retrieve the same vector, if set to `False`. For some
