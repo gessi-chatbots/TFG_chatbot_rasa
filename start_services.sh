@@ -1,3 +1,4 @@
-cd app/
-# Start rasa server with nlu model
-rasa run --enable-api --cors "*" --debug && rasa run actions
+cd ./app
+rasa train
+rasa run --enable-api --cors "*" &
+rasa run actions &
