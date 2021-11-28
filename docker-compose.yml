@@ -1,8 +1,9 @@
 version: '3.8'
 services:
     rasa:
-      build:
-        dockerfile: Dockerfile
+      image: rasa/rasa:2.8.2
+      volumes:
+        - ./:/app/
       ports:
         - 5005:5005
       command: 
