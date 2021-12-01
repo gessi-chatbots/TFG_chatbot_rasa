@@ -28,23 +28,32 @@ stories:
   - action: utter_goodbye
 
 
-- story: disable app happy path
+- story: disable app happy path 1
   steps:
   - intent: notification_app
     entities:
     - action: disable
     - name_app: gmail
   - action: action_search_app
+
+- story: disable app happy path 2
+  steps:
   - intent: notification_app
     entities:
     - action: disable
     - name_app: camera
   - action: action_search_app
+
+- story: disable app happy path 3
+  steps:
   - intent: notification_app
     entities:
     - action: disable
     - name_app: phone
   - action: action_search_app
+
+- story: disable app happy path 4
+  steps:
   - intent: notification_app
     entities:
     - action: disable

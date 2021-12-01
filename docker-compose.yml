@@ -11,7 +11,7 @@ services:
         - --cors
         - "*"
         - --enable-api
-
+        - --debug
     action_server:
       image: rasa/rasa-sdk:2.8.2
       volumes:

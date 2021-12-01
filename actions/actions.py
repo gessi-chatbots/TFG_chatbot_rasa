@@ -13,30 +13,30 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
 APPS_db = {
-    "youTube",
+    "YouTube",
     "tfg_chatbot_movil",
-    "google",
+    "Google",
     "prueba_boton",
-    "messages",
-    "google play store",
-    "contacts",
-    "camera",
-    "clock",
-    "gmail",
-    "duo",
+    "Messages",
+    "Google Play Store",
+    "Contacts",
+    "Camera",
+    "Clock",
+    "Gmail",
+    "Duo",
     "Drive",
     "Maps",
-    "chrome",
-    "phone",
-    "google play movies & TV",
+    "Chrome",
+    "Phone",
+    "Google Play Movies & TV",
     "webView shell",
-    "photos",
-    "calendar",
-    "files",
+    "Photos",
+    "Calendar",
+    "Files",
     "android_chatbot",
-    "settings",
-    "youTube music",
-    "system tracing",
+    "Settings",
+    "YouTube Music",
+    "System Tracing",
     "usage_stats_example"
 }
 
@@ -54,8 +54,13 @@ class searchApp(Action):
          print(app)
          if app in APPS_db:
             txt = "{}d notifications for app: {}".format(action,app)
-            dispatcher.utter_message(text=txt)
+            flutt = action+"_notification_"+app
          else:
             txt = "{} not found in your device".format(app)
-            dispatcher.utter_message(text=txt)
+            flutt = "undefined"
+         date_response = {
+             "text": txt,
+             "flutteraction": flutt
+         }
+         dispatcher.utter_message(json_message = date_response)
          return []
