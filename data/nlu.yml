@@ -32,11 +32,18 @@ nlu:
   examples: |
     - I want to [disable](action) the [camera](name_app) notification
     - [disable](action) [youtube](name_app) notification
+    - [disable](action) [youTube](name_app) notification
     - I want to [disable](action) the [gmail](name_app) notification
     - I want to [enable](action) the [gmail](name_app) notification
     - I want to [disable](action) the [settings](name_app) notification
     - [disable](action) [chrome](name_app) notifications
-    - [enable](action) [chrome](name_app) notifications
+    - [enable](action) [Chrome](name_app) notifications
+- synonym: enable
+  examples: |
+    - authorize
+    - permit
+    - allow
+    - legalize
 - intent: deny
   examples: |
     - no
