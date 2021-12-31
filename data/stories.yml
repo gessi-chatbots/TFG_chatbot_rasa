@@ -59,3 +59,19 @@ stories:
     - action: disable
     - name_app: chrome
   - action: action_search_app
+
+- story: control data happy path 1
+  steps:
+  - intent: restrict_data
+    entities:
+    - action: disable
+    - name_app: chrome
+  - action: action_restrict_data
+
+- story: control data happy path 2
+  steps:
+  - intent: restrict_data
+    entities:
+    - action: enable
+    - name_app: gmail
+  - action: action_restrict_data

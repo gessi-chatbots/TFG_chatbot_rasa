@@ -38,12 +38,24 @@ nlu:
     - I want to [disable](action) the [settings](name_app) notification
     - [disable](action) [chrome](name_app) notifications
     - [enable](action) [Chrome](name_app) notifications
+- intent: restrict_data
+  examples: |
+    - [disable](action) [youtube](name_app) usage background data
+    - [enable](action) [gmail](name_app) background data
+    - I want to [disable](action) the [facebook](name_app) mobile data
+    - I want to [disable](action) [gmail](name_app) WI-FI usage
+    - [enable](action) [chrome](name_app) WIFI usage
 - synonym: enable
   examples: |
     - authorize
     - permit
     - allow
     - legalize
+- synonym: disable
+  examples: |
+    - restrict
+    - control
+    - limit
 - intent: deny
   examples: |
     - no

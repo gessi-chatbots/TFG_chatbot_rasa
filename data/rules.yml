@@ -12,7 +12,12 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Modify app
+- rule: Notification app
   steps:
   - intent: notification_app
   - action: action_search_app
+
+- rule: Data app
+  steps:
+  - intent: restrict_data
+  - action: action_restrict_data  
