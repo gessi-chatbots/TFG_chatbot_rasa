@@ -5,6 +5,7 @@ session_config:
 intents:
 - notification_app
 - restrict_data
+- battery_optimization
 - greet
 - goodbye
 - deny
@@ -31,3 +32,4 @@ responses:
 actions:
 - action_search_app
 - action_restrict_data
+- action_battery_opt

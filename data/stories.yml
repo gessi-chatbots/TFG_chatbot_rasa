@@ -75,3 +75,19 @@ stories:
     - action: enable
     - name_app: gmail
   - action: action_restrict_data
+
+- story: battery optimization happy path 1
+  steps:
+  - intent: battery_optimization
+    entities:
+    - action: enable
+    - name_app: gmail
+  - action: action_battery_opt
+
+- story: battery optimization happy path 1
+  steps:
+  - intent: battery_optimization
+    entities:
+    - action: control
+    - name_app: youtube
+  - action: action_battery_opt

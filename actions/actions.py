@@ -112,3 +112,40 @@ class restrictData(Action):
                 "flutteraction": flutt
             }
             dispatcher.utter_message(json_message = date_response)
+
+
+class batteryOptimization(Action):
+
+     def name(self) -> Text:
+         return "action_battery_opt"
+
+     def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+         app = next(tracker.get_latest_entity_values("name_app"), None)
+         action = next(tracker.get_latest_entity_values("action"), None)
+         print(app)
+         if app is not None:
+            fuzzy = process.extractOne(app, APPS_db)
+            print(fuzzy)
+            if fuzzy[1] >= 80:
+                txt = "{}d battery optimization for app: {}".format(action,fuzzy[0])
+                flutt = action+"_batteryopt_"+fuzzy[0]
+            else:
+                txt = "{} not found in your device".format(fuzzy[0])
+                flutt = "undefined"
+            date_response = {
+                "text": txt,
+                "flutteraction": flutt
+            }
+            dispatcher.utter_message(json_message = date_response)
+            return []
+         else:
+            txt = "Could not identify the application, please indicate a proper App name"
+            flutt = "undefined"
+            date_response = {
+                "text": txt,
+                "flutteraction": flutt
+            }
+            dispatcher.utter_message(json_message = date_response)

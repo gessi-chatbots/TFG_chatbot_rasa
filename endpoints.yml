@@ -21,14 +21,11 @@ action_endpoint:
 tracker_store:
     type: SQL
     dialect: "postgresql"  # the dialect used to interact with the db
-    url: "tfg_chatbot_rasa-postgres-1"  # (optional) host of the sql db, e.g. "localhost"
+    url: "tfg_chatbot_bd-postgres-1"  # (optional) host of the sql db, e.g. "localhost"
     db: "rasa"  # path to your db
     username:  "project_admin" # username used for authentication
     password:  "root" # password used for authentication
     query: # optional dictionary to be added as a query string to the connection URL
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-      - ./scripts/:/docker-entrypoint-initdb.d/
 #tracker_store:
 #    type: mongod
 #    url: <url to your mongo instance, e.g. mongodb://localhost:27017>

@@ -2,13 +2,23 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: disable app happy path
+- story: disable notification app happy path
   steps:  
   - user: |
-      disabled notifications for app: gmail
-  - intent: notification_app
-    entities:
-    - action: disable
-    - name_app: gmail
+      I want to [disable](action) the [camera](name_app) notification
+    intent: notification_app
   - action: action_search_app
 
+- story: control data happy path
+  steps:
+  - user: |
+      [disable](action) [youtube](name_app) usage background data
+    intent: restrict_data
+  - action: action_restrict_data
+
+- story: battery optimization happy path
+  steps:
+  - user: |
+      [disable](action) [youtube](name_app) battery optimization
+    intent: battery_optimization
+  - action: action_battery_opt

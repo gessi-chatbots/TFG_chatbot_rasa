@@ -45,6 +45,12 @@ nlu:
     - I want to [disable](action) the [facebook](name_app) mobile data
     - I want to [disable](action) [gmail](name_app) WI-FI usage
     - [enable](action) [chrome](name_app) WIFI usage
+- intent: battery_optimization
+  examples: |
+    - [disable](action) [youtube](name_app) battery optimization
+    - [enable](action) battery optimization of [gmail](name_app)
+    - [optimize](action) battery for [chrome](name_app) 
+    - [control](action) [chrome](name_app) battery usage
 - synonym: enable
   examples: |
     - authorize
@@ -54,7 +60,6 @@ nlu:
 - synonym: disable
   examples: |
     - restrict
-    - control
     - limit
 - intent: deny
   examples: |
