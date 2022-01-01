@@ -53,7 +53,7 @@ jobs:
             --application-name Git_Application \
             --deployment-group-name development_gropup \
             --deployment-config-name CodeDeployDefault.OneAtATime \
-            --github-location repository=branrodriguez/TFG_chatbot_rasa,commitId=df9db3f864b37c0bba8c654676bd5f5fe7315d94 
+            --github-location repository=branrodriguez/TFG_chatbot_rasa,commitId=${{ github.sha }}
       #Step 3
       - name: Create CodeDeploy Deployment  
         run: docker-compose up -d
