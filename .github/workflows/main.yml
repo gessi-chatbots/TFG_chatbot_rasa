@@ -1,0 +1,59 @@
+name: CI/CD RASA
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  continuous-integration:
+    name: Training and Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rasa Train and Test GitHub Action
+        uses: RasaHQ/rasa-train-test-gha@main
+        with:
+          data_validate: true # Validates domain and data files to check for possible mistakes
+          rasa_train: true # Run rasa train
+          rasa_test: true # Run rasa test
+          test_args: --fail-on-prediction-errors # Fail pipeline when test fails
+          test_type: all # Run both 'core' and 'nlu' tests
+      - name: Upload model
+        if: github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@master
+        with:
+          name: model
+          path: models
+      - name: Store test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: |
+            results
+            reports
+  continuous-deployment:
+    runs-on: ubuntu-latest
+    needs: [continuous-integration]
+    if: github.ref == 'refs/heads/main'
+    steps:
+     # Step 1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: AKIAXNJHOROVPX5UNVOU
+          aws-secret-access-key: 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
+          aws-region: us-east-2
+     # Step 2
+      - name: Create CodeDeploy Deployment
+        id: deploy
+        run: |
+          aws deploy create-deployment \
+            --application-name Git_Application \
+            --deployment-group-name development_gropup \
+            --deployment-config-name CodeDeployDefault.OneAtATime \
+            --github-location repository=branrodriguez/TFG_chatbot_rasa,commitId=df9db3f864b37c0bba8c654676bd5f5fe7315d94 
+      #Step 3
+      - name: Create CodeDeploy Deployment  
+        run: docker-compose up -d
