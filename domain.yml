@@ -4,6 +4,8 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - notification_app
+- restrict_data
+- battery_optimization
 - greet
 - goodbye
 - deny
@@ -29,3 +31,5 @@ responses:
   - text: I am a bot, powered by Rasa.
 actions:
 - action_search_app
+- action_restrict_data
+- action_battery_opt

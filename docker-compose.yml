@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+    rasa:
+      image: rasa/rasa:2.8.2
+      volumes:
+        - ./:/app/
+      ports:
+        - 5005:5005
+      command: 
+        - run
+        - --cors
+        - "*"
+        - --enable-api
+        - --debug
+        - --endpoints
+        - endpoints.yml
+      networks:
+      - localnet
+      
+    action_server:
+      build: .
+      ports: 
+        - "5055:5055"
+      networks:
+      - localnet
+networks:
+  localnet:
+    name: custom_network
+  #  postgres:
+  #    image: postgres:latest
+  #    restart: always
+  #    environment:
+  #      - POSTGRES_USER=project_admin
+  #      - POSTGRES_PASSWORD=root
+  #      - POSTGRES_DB=rasa
+  #    ports: 
+  #      - "5432:5432"
+  #  pgAdmin:
+  #    image: dpage/pgadmin4
+  #    restart: always
+  #    environment:
+  #      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+   #     - PGADMIN_DEFAULT_PASSWORD=root
+   #   ports:
+   #     - "5050:80"
+
+   # nodejs:
+   #   image: node:17-alpine3.12
+   #   volumes:
+   #     - ./:/Node-Backend

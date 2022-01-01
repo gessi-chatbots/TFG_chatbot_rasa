@@ -11,20 +11,21 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 action_endpoint:
-  url: "http://localhost:5055/webhook"
+  url: "http://tfg_chatbot_rasa-action_server-1:5055/webhook"
+  #url: "http://localhost:5055/webhook"
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
 # https://rasa.com/docs/rasa/tracker-stores
 
-#tracker_store:
-#    type: redis
-#    url: <host of the redis instance, e.g. localhost>
-#    port: <port of your redis instance, usually 6379>
-#    db: <number of your database within redis, e.g. 0>
-#    password: <password used for authentication>
-#    use_ssl: <whether or not the communication is encrypted, default false>
-
+tracker_store:
+    type: SQL
+    dialect: "postgresql"  # the dialect used to interact with the db
+    url: "tfg_chatbot_bd-postgres-1"  # (optional) host of the sql db, e.g. "localhost"
+    db: "rasa"  # path to your db
+    username:  "project_admin" # username used for authentication
+    password:  "root" # password used for authentication
+    query: # optional dictionary to be added as a query string to the connection URL
 #tracker_store:
 #    type: mongod
 #    url: <url to your mongo instance, e.g. mongodb://localhost:27017>
