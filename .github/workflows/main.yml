@@ -58,5 +58,6 @@ jobs:
       - name: Init docker
         run: "sudo service docker start  * Starting Docker: docker"
       #Step 4
-      - name: Docker Compose Up  
+      - name: Docker Compose Up
+        working-directory: ./home/ec2-user/rasa/git/TFG_chatbot_rasa  
         run: docker-compose up -d
