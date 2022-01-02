@@ -50,10 +50,13 @@ jobs:
         id: deploy
         run: |
           aws deploy create-deployment \
-            --application-name Git_Application \
-            --deployment-group-name development_gropup \
+            --application-name Git_application \
+            --deployment-group-name development_group \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=branrodriguez/TFG_chatbot_rasa,commitId=${{ github.sha }}
       #Step 3
-      - name: Create CodeDeploy Deployment  
+      - name: Init docker
+        run: "sudo service docker start  * Starting Docker: docker"
+      #Step 4
+      - name: Docker Compose Up  
         run: docker-compose up -d
