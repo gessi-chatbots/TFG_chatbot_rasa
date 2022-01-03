@@ -2,6 +2,7 @@ version: '3.8'
 services:
     rasa:
       image: rasa/rasa:2.8.2
+      container_name: tfg_chatbot_rasa-rasa-1
       volumes:
         - ./:/app/
       ports:
@@ -18,6 +19,7 @@ services:
       - localnet
       
     action_server:
+      container_name: tfg_chatbot_rasa-action_server-1
       build: .
       ports: 
         - "5055:5055"
@@ -26,6 +28,7 @@ services:
 
     postgres:
       image: postgres:latest
+      container_name: tfg_chatbot_bd_pgAdmin_1
       restart: always
       environment:
         - POSTGRES_USER=project_admin
