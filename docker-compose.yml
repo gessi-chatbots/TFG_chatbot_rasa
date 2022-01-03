@@ -23,18 +23,22 @@ services:
         - "5055:5055"
       networks:
       - localnet
+
+    postgres:
+      image: postgres:latest
+      restart: always
+      environment:
+        - POSTGRES_USER=project_admin
+        - POSTGRES_PASSWORD=root
+        - POSTGRES_DB=rasa
+      ports: 
+        - "5432:5432"
+      networks:
+      - localnet
 networks:
   localnet:
     name: custom_network
-  #  postgres:
-  #    image: postgres:latest
-  #    restart: always
-  #    environment:
-  #      - POSTGRES_USER=project_admin
-  #      - POSTGRES_PASSWORD=root
-  #      - POSTGRES_DB=rasa
-  #    ports: 
-  #      - "5432:5432"
+    
   #  pgAdmin:
   #    image: dpage/pgadmin4
   #    restart: always
