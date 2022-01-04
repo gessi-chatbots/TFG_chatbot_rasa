@@ -15,20 +15,15 @@ services:
         - --debug
         - --endpoints
         - endpoints.yml
-      networks:
-      - localnet
-      
     action_server:
       container_name: tfg_chatbot_rasa-action_server-1
       build: .
       ports: 
         - "5055:5055"
-      networks:
-      - localnet
 
     postgres:
       image: postgres:latest
-      container_name: tfg_chatbot_bd_pgAdmin_1
+      container_name: tfg_chatbot_rasa-postgres-1
       restart: always
       environment:
         - POSTGRES_USER=project_admin
@@ -36,11 +31,6 @@ services:
         - POSTGRES_DB=rasa
       ports: 
         - "5432:5432"
-      networks:
-      - localnet
-networks:
-  localnet:
-    name: custom_network
     
   #  pgAdmin:
   #    image: dpage/pgadmin4

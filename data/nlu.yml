@@ -51,6 +51,13 @@ nlu:
     - [enable](action) battery optimization of [gmail](name_app)
     - [optimize](action) battery for [chrome](name_app) 
     - [control](action) [chrome](name_app) battery usage
+- intent: permissions_app
+  examples: |
+    - [disable](action) [youtube](name_app) permissions
+    - [enable](action) permissions of [gmail](name_app)
+    - [control](action) [chrome](name_app) permissions
+    - See the permissions for [camera](name_app)
+    - Show me [facebook](name_app) permissions  
 - synonym: enable
   examples: |
     - authorize

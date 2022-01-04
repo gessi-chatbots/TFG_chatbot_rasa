@@ -6,6 +6,7 @@ intents:
 - notification_app
 - restrict_data
 - battery_optimization
+- permissions_app
 - greet
 - goodbye
 - deny
@@ -33,3 +34,4 @@ actions:
 - action_search_app
 - action_restrict_data
 - action_battery_opt
+- action_permissions_app

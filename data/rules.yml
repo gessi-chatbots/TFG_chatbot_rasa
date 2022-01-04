@@ -26,3 +26,9 @@ rules:
   steps:
   - intent: battery_optimization
   - action: action_battery_opt  
+
+- rule: Permissions app
+  steps:
+  - intent: permissions_app
+  - action: action_permissions_app  
+  
