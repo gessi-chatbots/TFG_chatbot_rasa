@@ -15,18 +15,6 @@ stories:
   - action: utter_greet
   - intent: mood_unhappy
   - action: utter_cheer_up
-  - action: utter_did_that_help
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
 
 - story: disable app happy path 1
   steps:
@@ -88,6 +76,14 @@ stories:
   steps:
   - intent: battery_optimization
     entities:
+    - action: optimize
+    - name_app: facebook
+  - action: action_battery_opt
+
+- story: battery optimization happy path 3
+  steps:
+  - intent: battery_optimization
+    entities:
     - action: control
     - name_app: youtube
   - action: action_battery_opt
@@ -98,5 +94,20 @@ stories:
     entities:
     - action: control
     - name_app: camera
+  - action: action_permissions_app
+
+- story: permissions app happy path 1
+  steps:
+  - intent: permissions_app
+    entities:
+    - name_app: duo
+  - action: action_permissions_app
+
+- story: permissions app happy path 2
+  steps:
+  - intent: permissions_app
+    entities:
+    - action: control
+    - name_app: Youtube Music
   - action: action_permissions_app
 

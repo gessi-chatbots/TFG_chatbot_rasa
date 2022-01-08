@@ -15,6 +15,7 @@ services:
         - --debug
         - --endpoints
         - endpoints.yml
+      restart: on-failure:5
     action_server:
       container_name: tfg_chatbot_rasa-action_server-1
       build: .
@@ -29,6 +30,8 @@ services:
         - POSTGRES_USER=project_admin
         - POSTGRES_PASSWORD=root
         - POSTGRES_DB=rasa
+      volumes:
+        - ./scripts:/scripts/
       ports: 
         - "5432:5432"
     

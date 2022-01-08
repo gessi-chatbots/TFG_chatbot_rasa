@@ -33,24 +33,37 @@ nlu:
     - I want to [disable](action) the [camera](name_app) notification
     - [disable](action) [youtube](name_app) notification
     - [disable](action) [youTube](name_app) notification
+    - [limit](action) [youTube](name_app) notification
     - I want to [disable](action) the [gmail](name_app) notification
     - I want to [enable](action) the [gmail](name_app) notification
     - I want to [disable](action) the [settings](name_app) notification
+    - I want to [restrict](action) the [calendar](name_app) notifications
     - [disable](action) [chrome](name_app) notifications
-    - [enable](action) [Chrome](name_app) notifications
+    - [allow](action) [Chrome](name_app) notifications
+    - [restrict](action) [Chrome](name_app) notifications
 - intent: restrict_data
   examples: |
     - [disable](action) [youtube](name_app) usage background data
     - [enable](action) [gmail](name_app) background data
     - I want to [disable](action) the [facebook](name_app) mobile data
     - I want to [disable](action) [gmail](name_app) WI-FI usage
+    - I want to [control](action) [gmail](name_app) WI-FI usage
     - [enable](action) [chrome](name_app) WIFI usage
+    - [control](action) [Duo](name_app) WIFI usage
+    - [restrict](action) [Youtube Music](name_app) WIFI usage
 - intent: battery_optimization
   examples: |
     - [disable](action) [youtube](name_app) battery optimization
     - [enable](action) battery optimization of [gmail](name_app)
-    - [optimize](action) battery for [chrome](name_app) 
-    - [control](action) [chrome](name_app) battery usage
+    - [optimize](action) battery for [chrome](name_app)
+    - [disable](action) battery optimization for [chrome](name_app) 
+    - [control](action) [Chrome](name_app) battery usage
+    - [restrict](action) battery optimization of [duo](name_app)
+    - [enable](action) battery optimization of [Photos](name_app)
+    - [restrict](action) battery optimization [Camera](name_app)
+    - [limit](action) [youtube music](name_app) battery optimization
+    - [restrict](action) [chrome](name_app) battery optimization
+    - [limit](action) battery optimization of [gmail](name_app)
 - intent: permissions_app
   examples: |
     - [disable](action) [youtube](name_app) permissions
@@ -58,6 +71,9 @@ nlu:
     - [control](action) [chrome](name_app) permissions
     - See the permissions for [camera](name_app)
     - Show me [facebook](name_app) permissions  
+    - Show me [Youtube Music](name_app) permissions
+    - [restrict](action) [chrome](name_app) permissions
+    - [limit](action) [camera](name_app) permissions
 - synonym: enable
   examples: |
     - authorize
@@ -93,6 +109,7 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - fine
 - intent: mood_unhappy
   examples: |
     - my day was horrible

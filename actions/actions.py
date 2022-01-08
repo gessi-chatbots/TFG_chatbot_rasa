@@ -12,6 +12,7 @@ from fuzzywuzzy import process
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+import psycopg2
 
 APPS_db = {
     "YouTube",
@@ -53,14 +54,19 @@ class controlNotifications(Action):
          app = next(tracker.get_latest_entity_values("name_app"), None)
          action = next(tracker.get_latest_entity_values("action"), None)
          print(app)
+         print("Sender_id"+str(tracker.sender_id))
+         installed_apps = conectionToDB(tracker)
+         print("Installed apps"+str(installed_apps))
+         if action is None: 
+             action = "control"
          if app is not None:
-            fuzzy = process.extractOne(app, APPS_db)
+            fuzzy = process.extractOne(app, installed_apps)
             print(fuzzy)
             if fuzzy[1] >= 80:
                 txt = "{}d notifications for app: {}".format(action,fuzzy[0])
                 flutt = action+"_notification_"+fuzzy[0]
             else:
-                txt = "{} not found in your device".format(fuzzy[0])
+                txt = "{} not found in your device".format(app)
                 flutt = "undefined"
             date_response = {
                 "text": txt,
@@ -69,13 +75,14 @@ class controlNotifications(Action):
             dispatcher.utter_message(json_message = date_response)
             return []
          else:
-            txt = "Could not identify the application, please indicate a proper App name"
+            txt = "Could not identify the application, please indicate a proper app name"
             flutt = "undefined"
             date_response = {
                 "text": txt,
                 "flutteraction": flutt
             }
             dispatcher.utter_message(json_message = date_response)
+
 
 class restrictData(Action):
 
@@ -105,7 +112,7 @@ class restrictData(Action):
             dispatcher.utter_message(json_message = date_response)
             return []
          else:
-            txt = "Could not identify the application, please indicate a proper App name"
+            txt = "Could not identify the application, please indicate a proper app name"
             flutt = "undefined"
             date_response = {
                 "text": txt,
@@ -142,7 +149,7 @@ class batteryOptimization(Action):
             dispatcher.utter_message(json_message = date_response)
             return []
          else:
-            txt = "Could not identify the application, please indicate a proper App name"
+            txt = "Could not identify the application, please indicate a proper app name"
             flutt = "undefined"
             date_response = {
                 "text": txt,
@@ -178,10 +185,24 @@ class permissionsApp(Action):
             dispatcher.utter_message(json_message = date_response)
             return []
          else:
-            txt = "Could not identify the application, please indicate a proper App name"
+            txt = "Could not identify the application, please indicate a proper app name"
             flutt = "undefined"
             date_response = {
                 "text": txt,
                 "flutteraction": flutt
             }
             dispatcher.utter_message(json_message = date_response)
+
+
+def conectionToDB(tracker):
+    connection = psycopg2.connect(host="tfg_chatbot_rasa-postgres-1",dbname="rasa",user="project_admin",password="root")
+    cursor = connection.cursor()
+    query =  "SELECT app_names FROM public.users WHERE email = %s"
+    cursor.execute(query, (tracker.sender_id,))
+    try:
+        result = cursor.fetchall()[0][0]
+    except:
+        result = []
+    cursor.close()
+    connection.close()
+    return result
