@@ -5,6 +5,5 @@ files:
     destination: /home/ec2-user/rasa/git/TFG_chatbot_rasa
 hooks:
   ApplicationStart:
-    - location: run.sh  
-      timeout: 300
+    - location: run.sh
       runas: root
