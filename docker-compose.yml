@@ -15,7 +15,6 @@ services:
         - --debug
         - --endpoints
         - endpoints.yml
-      restart: on-failure:5
     action_server:
       container_name: tfg_chatbot_rasa-action_server-1
       build: .
