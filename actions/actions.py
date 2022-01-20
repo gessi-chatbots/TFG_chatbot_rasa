@@ -13,39 +13,12 @@ from fuzzywuzzy import process
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import psycopg2
-
-APPS_db = {
-    "YouTube",
-    "tfg_chatbot_movil",
-    "Google",
-    "prueba_boton",
-    "Messages",
-    "Google Play Store",
-    "Contacts",
-    "Camera",
-    "Clock",
-    "Gmail",
-    "Duo",
-    "Drive",
-    "Maps",
-    "Chrome",
-    "Phone",
-    "Google Play Movies & TV",
-    "webView shell",
-    "Photos",
-    "Calendar",
-    "Files",
-    "android_chatbot",
-    "Settings",
-    "YouTube Music",
-    "System Tracing",
-    "usage_stats_example"
-}
+import re
 
 class controlNotifications(Action):
 
      def name(self) -> Text:
-         return "action_search_app"
+         return "action_notification"
 
      def run(self, dispatcher: CollectingDispatcher,
              tracker: Tracker,
@@ -53,17 +26,16 @@ class controlNotifications(Action):
 
          app = next(tracker.get_latest_entity_values("name_app"), None)
          action = next(tracker.get_latest_entity_values("action"), None)
-         print(app)
-         print("Sender_id"+str(tracker.sender_id))
          installed_apps = conectionToDB(tracker)
-         print("Installed apps"+str(installed_apps))
          if action is None: 
+             syntaxAction = "controll"
              action = "control"
+         else:
+             syntaxAction = sintaxAction(action)
          if app is not None:
             fuzzy = process.extractOne(app, installed_apps)
-            print(fuzzy)
             if fuzzy[1] >= 80:
-                txt = "{}d notifications for app: {}".format(action,fuzzy[0])
+                txt = "{}ed notifications for {}".format(syntaxAction,fuzzy[0])
                 flutt = action+"_notification_"+fuzzy[0]
             else:
                 txt = "{} not found in your device".format(app)
@@ -96,14 +68,21 @@ class restrictData(Action):
          app = next(tracker.get_latest_entity_values("name_app"), None)
          action = next(tracker.get_latest_entity_values("action"), None)
          print(app)
+         installed_apps = conectionToDB(tracker)
+         print("Installed apps"+str(installed_apps))
+         if action is None: 
+             syntaxAction = "controll"
+             action = "control"
+         else:
+             syntaxAction = sintaxAction(action)
          if app is not None:
-            fuzzy = process.extractOne(app, APPS_db)
+            fuzzy = process.extractOne(app, installed_apps)
             print(fuzzy)
             if fuzzy[1] >= 80:
-                txt = "{}d data usage for app: {}".format(action,fuzzy[0])
+                txt = "{}ed data usage for {}".format(syntaxAction,fuzzy[0])
                 flutt = action+"_datausage_"+fuzzy[0]
             else:
-                txt = "{} not found in your device".format(fuzzy[0])
+                txt = "{} not found in your device".format(app)
                 flutt = "undefined"
             date_response = {
                 "text": txt,
@@ -133,14 +112,22 @@ class batteryOptimization(Action):
          app = next(tracker.get_latest_entity_values("name_app"), None)
          action = next(tracker.get_latest_entity_values("action"), None)
          print(app)
+         print("Sender_id"+str(tracker.sender_id))
+         installed_apps = conectionToDB(tracker)
+         print("Installed apps"+str(installed_apps))
+         if action is None: 
+             syntaxAction = "controll"
+             action = "control"
+         else:
+             syntaxAction = sintaxAction(action)
          if app is not None:
-            fuzzy = process.extractOne(app, APPS_db)
+            fuzzy = process.extractOne(app, installed_apps)
             print(fuzzy)
             if fuzzy[1] >= 80:
-                txt = "{}d battery optimization for app: {}".format(action,fuzzy[0])
+                txt = "{}ing battery optimization for {}".format(syntaxAction,fuzzy[0])
                 flutt = action+"_batteryopt_"+fuzzy[0]
             else:
-                txt = "{} not found in your device".format(fuzzy[0])
+                txt = "{} not found in your device".format(app)
                 flutt = "undefined"
             date_response = {
                 "text": txt,
@@ -169,14 +156,22 @@ class permissionsApp(Action):
          app = next(tracker.get_latest_entity_values("name_app"), None)
          action = next(tracker.get_latest_entity_values("action"), None)
          print(app)
+         print("Sender_id"+str(tracker.sender_id))
+         installed_apps = conectionToDB(tracker)
+         print("Installed apps"+str(installed_apps))
+         if action is None: 
+             syntaxAction = "controll"
+             action = "control"
+         else:
+             syntaxAction = sintaxAction(action)
          if app is not None:
-            fuzzy = process.extractOne(app, APPS_db)
+            fuzzy = process.extractOne(app, installed_apps)
             print(fuzzy)
             if fuzzy[1] >= 80:
-                txt = "{}d permissions for app: {}".format(action,fuzzy[0])
+                txt = "{}ed permissions for {}".format(syntaxAction,fuzzy[0])
                 flutt = action+"_permissions_"+fuzzy[0]
             else:
-                txt = "{} not found in your device".format(fuzzy[0])
+                txt = "{} not found in your device".format(app)
                 flutt = "undefined"
             date_response = {
                 "text": txt,
@@ -195,14 +190,21 @@ class permissionsApp(Action):
 
 
 def conectionToDB(tracker):
-    connection = psycopg2.connect(host="tfg_chatbot_rasa-postgres-1",dbname="rasa",user="project_admin",password="root")
-    cursor = connection.cursor()
-    query =  "SELECT app_names FROM public.users WHERE email = %s"
-    cursor.execute(query, (tracker.sender_id,))
     try:
+        connection = psycopg2.connect(host="tfg_chatbot_rasa-postgres-1",dbname="rasa",user="project_admin",password="root")
+        cursor = connection.cursor()
+        query =  "SELECT app_names FROM public.users WHERE email = %s"
+        cursor.execute(query, (tracker.sender_id,))
         result = cursor.fetchall()[0][0]
+        cursor.close()
+        connection.close()
+        return result
     except:
-        result = []
-    cursor.close()
-    connection.close()
-    return result
+        return []
+
+def sintaxAction(action): #MIRAR PARA CASOS CON DOS PALABRAS
+    if re.search("[aeiou]$",action):
+        return action[:-1]
+    elif re.search("[lp]$",action):
+        return action+action[-1]
+    return action
