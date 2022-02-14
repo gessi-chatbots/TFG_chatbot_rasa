@@ -26,16 +26,18 @@ class controlNotifications(Action):
 
          app = next(tracker.get_latest_entity_values("name_app"), None)
          action = next(tracker.get_latest_entity_values("action"), None)
+         print(app)
+         print(action)
          installed_apps = conectionToDB(tracker)
          if action is None: 
-             syntaxAction = "controll"
+             syntaxAction = "controlled"
              action = "control"
          else:
              syntaxAction = sintaxAction(action)
          if app is not None:
             fuzzy = process.extractOne(app, installed_apps)
             if fuzzy[1] >= 80:
-                txt = "{}ed notifications for {}".format(syntaxAction,fuzzy[0])
+                txt = "{} notifications for {}".format(syntaxAction,fuzzy[0])
                 flutt = action+"_notification_"+fuzzy[0]
             else:
                 txt = "{} not found in your device".format(app)
@@ -71,7 +73,7 @@ class restrictData(Action):
          installed_apps = conectionToDB(tracker)
          print("Installed apps"+str(installed_apps))
          if action is None: 
-             syntaxAction = "controll"
+             syntaxAction = "controlled"
              action = "control"
          else:
              syntaxAction = sintaxAction(action)
@@ -79,7 +81,7 @@ class restrictData(Action):
             fuzzy = process.extractOne(app, installed_apps)
             print(fuzzy)
             if fuzzy[1] >= 80:
-                txt = "{}ed data usage for {}".format(syntaxAction,fuzzy[0])
+                txt = "{} data usage for {}".format(syntaxAction,fuzzy[0])
                 flutt = action+"_datausage_"+fuzzy[0]
             else:
                 txt = "{} not found in your device".format(app)
@@ -116,7 +118,7 @@ class batteryOptimization(Action):
          installed_apps = conectionToDB(tracker)
          print("Installed apps"+str(installed_apps))
          if action is None: 
-             syntaxAction = "controll"
+             syntaxAction = "controlled"
              action = "control"
          else:
              syntaxAction = sintaxAction(action)
@@ -124,7 +126,7 @@ class batteryOptimization(Action):
             fuzzy = process.extractOne(app, installed_apps)
             print(fuzzy)
             if fuzzy[1] >= 80:
-                txt = "{}ing battery optimization for {}".format(syntaxAction,fuzzy[0])
+                txt = "{} battery optimization for {}".format(syntaxAction,fuzzy[0])
                 flutt = action+"_batteryopt_"+fuzzy[0]
             else:
                 txt = "{} not found in your device".format(app)
@@ -160,7 +162,7 @@ class permissionsApp(Action):
          installed_apps = conectionToDB(tracker)
          print("Installed apps"+str(installed_apps))
          if action is None: 
-             syntaxAction = "controll"
+             syntaxAction = "controlled"
              action = "control"
          else:
              syntaxAction = sintaxAction(action)
@@ -168,7 +170,7 @@ class permissionsApp(Action):
             fuzzy = process.extractOne(app, installed_apps)
             print(fuzzy)
             if fuzzy[1] >= 80:
-                txt = "{}ed permissions for {}".format(syntaxAction,fuzzy[0])
+                txt = "{} permissions for {}".format(syntaxAction,fuzzy[0])
                 flutt = action+"_permissions_"+fuzzy[0]
             else:
                 txt = "{} not found in your device".format(app)
@@ -202,9 +204,9 @@ def conectionToDB(tracker):
     except:
         return []
 
-def sintaxAction(action): #MIRAR PARA CASOS CON DOS PALABRAS
+def sintaxAction(action):
     if re.search("[aeiou]$",action):
-        return action[:-1]
+        return action[:-1]+"ed"
     elif re.search("[lp]$",action):
-        return action+action[-1]
+        return action+action[-1]+"ed"
     return action
