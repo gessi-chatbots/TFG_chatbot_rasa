@@ -2,7 +2,7 @@ version: '3.0'
 os: linux
 files:
   - source: .
-    destination: /home/ec2-user/rasa/git/TFG_chatbot_rasa
+    destination: /home/ec2-user/rasa/chatbot_rasa
 hooks:
   ApplicationStart:
     - location: run.sh
