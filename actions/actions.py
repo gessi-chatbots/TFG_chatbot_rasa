@@ -193,7 +193,7 @@ class permissionsApp(Action):
 
 def conectionToDB(tracker):
     try:
-        connection = psycopg2.connect(host="chatbot_rasa-postgres-1",dbname="rasa")
+        connection = psycopg2.connect(host="chatbot_rasa-postgres-1",dbname="rasa",user="project_admin",password="root")
         cursor = connection.cursor()
         query =  "SELECT app_names FROM public.users WHERE email = %s"
         cursor.execute(query, (tracker.sender_id,))
