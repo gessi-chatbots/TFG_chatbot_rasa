@@ -1,7 +1,7 @@
 version: '3.8'
 services:
     rasa:
-      image: rasa/rasa:2.8.2
+      image: rasa/rasa:3.0
       container_name: chatbot_rasa-rasa-1
       volumes:
         - ./:/app/
