@@ -11,8 +11,8 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 action_endpoint:
-  url: "http://chatbot_rasa-action_server-1:5055/webhook"
-  #url: "http://localhost:5055/webhook"
+  #url: "http://chatbot_rasa-action_server-1:5055/webhook"
+  url: "http://localhost:/webhook"
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
@@ -21,7 +21,8 @@ action_endpoint:
 tracker_store:
     type: SQL
     dialect: "postgresql"  # the dialect used to interact with the db
-    url: "chatbot_rasa-postgres-1"  # (optional) host of the sql db, e.g. "localhost"
+    # url: "chatbot_rasa-postgres-1"  # (optional) host of the sql db, e.g. "localhost"
+    url: "localhost"
     db: "rasa"  # path to your db
     username:  "project_admin" # username used for authentication
     password:  "root" # password used for authentication

@@ -19,7 +19,7 @@ services:
       container_name: chatbot_rasa-action_server-1
       build: .
       ports: 
-        - "5055:5055"
+        - "5056:5056"
 
     postgres:
       image: postgres:latest
