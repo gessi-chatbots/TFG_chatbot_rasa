@@ -52,4 +52,4 @@ jobs:
             --application-name Git_application \
             --deployment-group-name development_group \
             --deployment-config-name CodeDeployDefault.OneAtATime \
-            --github-location repository=branrodriguez/TFG_chatbot_rasa,commitId=${{ github.sha }}
+            --github-location repository=gessi-chatbots/chatbot_rasa,commitId=${{ github.sha }}
