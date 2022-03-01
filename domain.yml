@@ -1,7 +1,5 @@
 version: '3.0'
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+
 intents:
 - notification_app
 - restrict_data
@@ -13,9 +11,11 @@ intents:
 - mood_great
 - mood_unhappy
 - bot_challenge
+
 entities:
 - action
 - name_app
+
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -29,8 +29,15 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
+
 actions:
 - action_notification
 - action_restrict_data
 - action_battery_opt
 - action_permissions_app
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
