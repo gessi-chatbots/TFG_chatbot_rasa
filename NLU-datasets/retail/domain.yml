@@ -1,0 +1,36 @@
+version: "3.0"
+
+intents:
+  - show_my_order_status
+  - finish_and_pay_retail
+  - need_more_time_retail
+  - greet
+  - goodbye
+
+responses:
+  utter_not_left:
+  - text: "Your order hasn't left yet."
+  
+  utter_arrived:
+  - text: "Your order has just arrived to its destination."
+  
+  utter_on_way:
+  - text: "Your order has just left."
+  
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_finish:
+  - text: "Right this way to pay."
+
+  utter_more_time:
+  - text: "No worries!"
+
+actions:
+- action_check_package_status
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

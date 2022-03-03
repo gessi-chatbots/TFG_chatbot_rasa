@@ -16,7 +16,6 @@ stories:
   - intent: mood_unhappy
   - action: utter_cheer_up
 
-
 - story: disable app happy path 1
   steps:
   - intent: notification_app

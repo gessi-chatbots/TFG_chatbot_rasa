@@ -1,0 +1,30 @@
+version: "3.0"
+
+stories:
+  - story: packages
+    steps:
+    - intent: show_my_order_status
+    - action: action_check_package_status
+  
+  ##DOESN'T WORK
+  #- story: first possibility
+  #  steps:
+  #  - intent: show_my_order_status
+  #  - action: utter_not_left
+  #- story: second possibility
+  #  steps:
+  #  - intent: show_my_order_status
+  #  - action: utter_arrived
+  #- story: third possibility
+  #  steps:
+  #  - intent: show_my_order_status
+  #  - action: utter_on_way
+
+  - story: happy path
+    steps:
+    - intent: finish_and_pay_retail
+    - action: utter_finish
+  - story: happy path
+    steps:
+    - intent: need_more_time_retail
+    - action: utter_more_time
