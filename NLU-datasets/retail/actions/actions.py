@@ -16,10 +16,10 @@ class checkPackageStatus(Action):
         days = random.random(0, 31)
         if (days < 10):
             dispatcher.utter_message(text="Your order hasn't left yet.")
-        elif (days < 30):
-            dispatcher.utter_message(text="Your order has just arrived to its destination.")
-        else:
+        elif (days < 20):
             dispatcher.utter_message(text="Your order has just left.")
+        else:
+            dispatcher.utter_message(text="Your order has just arrived to its destination.")
         
         return []
     
