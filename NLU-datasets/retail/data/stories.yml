@@ -28,3 +28,12 @@ stories:
     steps:
     - intent: need_more_time_retail
     - action: utter_more_time
+
+  - story: form story
+  steps:
+  - intent: greet
+  - action: name_form
+  - activate_loop: name_form
+  - slot_was_set: 
+    - requested_slot: first_name
+  

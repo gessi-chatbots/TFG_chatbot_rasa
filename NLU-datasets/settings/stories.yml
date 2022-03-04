@@ -1,0 +1,129 @@
+version: '3.0'
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+
+- story: disable app happy path 1
+  steps:
+  - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: gmail
+  - action: action_notification
+
+- story: disable app happy path 2
+  steps:
+  - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: camera
+  - action: action_notification
+
+- story: disable app happy path 3
+  steps:
+  - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: phone
+  - action: action_notification
+
+- story: disable app happy path 4
+  steps:
+  - intent: notification_app
+    entities:
+    - action: disable
+    - name_app: chrome
+  - action: action_notification
+
+- story: control data happy path 1
+  steps:
+  - intent: restrict_data
+    entities:
+    - action: disable
+    - name_app: chrome
+  - action: action_restrict_data
+
+- story: control data happy path 2
+  steps:
+  - intent: restrict_data
+    entities:
+    - action: enable
+    - name_app: shazam
+  - action: action_restrict_data
+
+- story: battery optimization happy path 1
+  steps:
+  - intent: battery_optimization
+    entities:
+    - action: enable
+    - name_app: gmail
+  - action: action_battery_opt
+
+- story: battery optimization happy path 2
+  steps:
+  - intent: battery_optimization
+    entities:
+    - action: optimize
+    - name_app: facebook
+  - action: action_battery_opt
+
+- story: battery optimization happy path 3
+  steps:
+  - intent: battery_optimization
+    entities:
+    - action: control
+    - name_app: youtube
+  - action: action_battery_opt
+
+- story: battery optimization happy path 4
+  steps:
+  - intent: battery_optimization
+    entities:
+    - action: limit
+    - name_app: camera
+  - action: action_battery_opt
+
+- story: permissions app happy path 1
+  steps:
+  - intent: permissions_app
+    entities:
+    - action: control
+    - name_app: camera
+  - action: action_permissions_app
+
+- story: permissions app happy path 2
+  steps:
+  - intent: permissions_app
+    entities:
+    - name_app: duo
+  - action: action_permissions_app
+
+- story: permissions app happy path 3
+  steps:
+  - intent: permissions_app
+    entities:
+    - action: control
+    - name_app: Youtube Music
+  - action: action_permissions_app
+
+- story: permissions app happy path 4
+  steps:
+  - intent: permissions_app
+    entities:
+    - action: limit
+    - name_app: chrome
+  - action: action_permissions_app
+

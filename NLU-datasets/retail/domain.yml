@@ -29,8 +29,39 @@ responses:
   utter_more_time:
   - text: "No worries!"
 
+  utter_submit:
+  - text: Perfect! Thank you!
+  
+  utter_slot_values:
+  - text: Hi {first_name} {last_name}! How are you?
+
 actions:
 - action_check_package_status
+- validate_name_form
+
+entity:
+- first_name
+- last_name
+
+slots:
+  first_name:
+    type: text
+    mappings:
+    - type: first_name
+      entity: first_name
+  last_name:
+    type: text
+    mappings:
+    - type: last_name
+      entity: last_name
+
+forms:
+  name_form:
+  required_slots:
+    - first_name
+    - last_name
+  
+  
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

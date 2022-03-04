@@ -1,0 +1,281 @@
+version: '3.0'
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: notification_app
+  examples: |
+    - [disable](action) [youtube](name_app) notification
+    - [disable](action) [twitter](name_app) notifications
+    - [disable](action) [shazam](name_app) notifications
+    - [disable](action) [snapchat](name_app) notifications
+    - [enable](action) [galeria](name_app) notifications
+    - [enable](action) [hbo](name_app) notifications
+    - [enable](action) [linkedin](name_app) notifications
+    - [enable](action) [hangouts](name_app) notifications
+    - [enable](action) [lens](name_app) notifications
+    - [enable](action) [snapseed](name_app) notifications
+    - [enable](action) [messages](name_app) notifications
+    - [enable](action) [blackplayer](name_app) notifications
+    - [enable](action) [chwazi](name_app) notifications
+    - [enable](action) [translate](name_app) notifications
+    - [limit](action) [imagin](name_app) notification
+    - [disable](action) [chrome](name_app) notifications
+    - [allow](action) [prime video](name_app) notifications
+    - [restrict](action) [instagram](name_app) notifications
+    - [enable](action) [netflix](name_app) notifications
+    - [enable](action) [gmail](name_app) notifications
+    - [enable](action) [clash royale](name_app) notifications
+    - [enable](action) [settings](name_app) notifications
+    - [turn off](action) [calendar](name_app) notifications
+    - [activate](action) [filmin](name_app) notifications
+    - [enable](action) [tuenti](name_app) notifications
+    - [activate](action) [LinkedIn](name_app) notifications
+    - [turn on](action) [Play Store](name_app) notifications
+    - I want to [disable](action) [gmail](name_app) notifications
+    - I want to [disable](action) [youtube](name_app) notifications
+    - I want to [enable](action) [twitter](name_app) notifications
+    - I want to [enable](action) [shazam](name_app) notifications
+    - I want to [enable](action) [snapchat](name_app) notifications
+    - I want to [disable](action) [snapchat](name_app) notifications
+    - I want to [restrict](action) [galeria](name_app) notifications
+    - I want to [restrict](action) [hangouts](name_app) notification
+    - I want to [restrict](action) [lens](name_app) notifications
+    - I want to [disable](action) [hbo](name_app) notifications
+    - I want to [enable](action) [clash royale](name_app) notifications
+    - I want to [disable](action) [settings](name_app) notifications
+    - I want to [restrict](action) [calendar](name_app) notifications
+    - I want to [restrict](action) [chrome](name_app) notifications
+    - I want to [restrict](action) [clash royale](name_app) notifications
+    - I want to [restrict](action) [netflix](name_app) notifications
+    - I want to [disable](action) [camera](name_app) notifications
+    - I want to [restrict](action) [prime video](name_app) notifications
+    - I want to [restrict](action) [filmin](name_app) notifications
+    - I want to [restrict](action) [tuenti](name_app) notifications
+    - I want to [turn off](action) [la caixa](name_app) notifications
+    - I want to [deactivate](action) [caixa sabadell](name_app) notifications
+
+- intent: restrict_data
+  examples: |
+    - I want to [disable](action) [facebook](name_app) mobile data
+    - I want to [disable](action) [gmail](name_app) wi-fi usage
+    - I want to [control](action) [youtube](name_app) wi-fi usage
+    - I want to [control](action) [twitter](name_app) wi-fi usage
+    - I want to [control](action) [snapseed](name_app) wi-fi usage
+    - I want to [control](action) [clash royale](name_app) wi-fi usage
+    - I want to [control](action) [hbo](name_app) wi-fi usage
+    - I want to [control](action) [filmin](name_app) wi-fi usage
+    - I want to [control](action) [netflix](name_app) wi-fi usage
+    - I want to [control](action) [chwazi](name_app) wi-fi usage
+    - I want to [control](action) [tuenti](name_app) wi-fi usage
+    - I want to [control](action) [translate](name_app) wi-fi usage
+    - I want to [control](action) [imagin](name_app) wi-fi usage
+    - I want to [control](action) [prime video](name_app) wi-fi usage
+    - I want to [control](action) [blackplayer](name_app) wi-fi usage
+    - I want to [control](action) [instagram](name_app) wi-fi usage
+    - I want to [control](action) [hangouts](name_app) wi-fi usage
+    - I want to [control](action) [lens](name_app) wi-fi usage
+    - I want to [deactivate](action) [play store](name_app) mobile data usage
+    - I want to [activate](action) [facebook](name_app) mobile data usage
+    - [disable](action) [youtube](name_app) usage background data
+    - [disable](action) [twitter](name_app) usage background data
+    - [disable](action) [facebook](name_app) usage background data
+    - [disable](action) [hbo](name_app) usage background data
+    - [disable](action) [lens](name_app) usage background data
+    - [disable](action) [clash royale](name_app) usage background data
+    - [disable](action) [blackplayer](name_app) usage background data
+    - [disable](action) [instagram](name_app) usage background data
+    - [disable](action) [imagin](name_app) usage background data
+    - [disable](action) [tuenti](name_app) usage background data
+    - [disable](action) [keep](name_app) usage background data
+    - [enable](action) [gmail](name_app) background data
+    - [enable](action) [chrome](name_app) wifi usage
+    - [control](action) [duo](name_app) wifi usage
+    - [restrict](action) [youtube music](name_app) wifi usage
+    - [restrict](action) [keep](name_app) wifi usage
+- intent: battery_optimization
+  examples: |
+    - [disable](action) [youtube](name_app) battery optimization
+    - [limit](action) [youtube music](name_app) battery optimization
+    - [restrict](action) [chrome](name_app) battery optimization
+    - [control](action) [lightroom](name_app) battery usage
+    - [control](action) [facebook](name_app) battery usage
+    - [control](action) [hbo](name_app) battery usage
+    - [control](action) [lens](name_app) battery usage
+    - [control](action) [keep](name_app) battery usage
+    - [control](action) [google translate](name_app) battery usage
+    - [control](action) [translate](name_app) battery usage
+    - [control](action) [clash royale](name_app) battery usage
+    - [control](action) [brawl stars](name_app) battery usage
+    - [control](action) [netflix](name_app) battery usage
+    - [control](action) [filmin](name_app) battery usage
+    - [control](action) [hbo](name_app) battery usage
+    - [control](action) [prime video](name_app) battery usage
+    - [control](action) [tuenti](name_app) battery usage
+    - [control](action) [youtube music](name_app) battery usage
+    - [control](action) [duo](name_app) battery usage
+    - [deactivate](action) [duo](name_app) battery usage
+    - [enable](action) battery optimization of [gmail](name_app)
+    - [optimize](action) battery for [chrome](name_app)
+    - [disable](action) battery optimization for [mi fit](name_app) 
+    - [restrict](action) battery optimization of [duo](name_app)
+    - [enable](action) battery optimization of [photos](name_app)
+    - [enable](action) battery optimization of [tuenti](name_app)
+    - [enable](action) battery optimization of [twitter](name_app)
+    - [enable](action) battery optimization of [netflix](name_app)
+    - [restrict](action) battery optimization [camera](name_app)
+    - [turn on](action) the battery optimization for [camera](name_app)
+    - [limit](action) battery optimization of [gmail](name_app)
+- intent: permissions_app
+  examples: |
+    - show me [facebook](name_app) permissions  
+    - show me [youtube music](name_app) permissions
+    - show me [camera](name_app) permissions
+    - show me [photos](name_app) permissions
+    - show me [tuenti](name_app) permissions
+    - show me [prime video](name_app) permissions
+    - show me [hbo](name_app) permissions
+    - show me [twitter](name_app) permissions
+    - show me [duo](name_app) permissions
+    - show me [lightroom](name_app) permissions
+    - show me [brawl stars](name_app) permissions
+    - show me [snapseed](name_app) permissions
+    - show me [imagin](name_app) permissions
+    - show me [chrome](name_app) permissions
+    - show me [google translate](name_app) permissions
+    - show me [lens](name_app) permissions
+    - show me [google lens](name_app) permissions
+    - [enable](action) permissions of [gmail](name_app)
+    - [enable](action) permissions of [youtube](name_app)
+    - [enable](action) permissions of [lens](name_app)
+    - [control](action) permissions of [blackplayer](name_app)
+    - [enable](action) permissions of [keep](name_app)
+    - [enable](action) permissions of [snapseed](name_app)
+    - [enable](action) permissions of [snapchat](name_app)
+    - [enable](action) permissions of [twitter](name_app)
+    - [restrict](action) permissions of [brawl stars](name_app)
+    - [enable](action) permissions of [clash royale](name_app)
+    - [enable](action) permissions of [netflix](name_app)
+    - [enable](action) permissions of [hbo](name_app)
+    - [enable](action) permissions of [filmin](name_app)
+    - [disable](action) permissions of [prime video](name_app)
+    - see the permissions for [camera](name_app)
+    - see the permissions for [gmail](name_app)
+    - see the permissions for [keep](name_app)
+    - see the permissions for [snapseed](name_app)
+    - see the permissions for [clash royale](name_app)
+    - see the permissions for [netflix](name_app)
+    - see the permissions for [filmin](name_app)
+    - see the permissions for [prime video](name_app)
+    - see the permissions for [lens](name_app)
+    - see the permissions for [hbo](name_app)
+    - see the permissions for [snapchat](name_app)
+    - see the permissions for [imagin](name_app)
+    - see the permissions for [bbva](name_app)
+    - see the permissions for [santander](name_app)
+    - see the permissions for [blackplayer](name_app)
+    - see the permissions for [instagram](name_app)    
+    - [restrict](action) [chrome](name_app) permissions
+    - [limit](action) [camera](name_app) permissions
+    - [limit](action) [opera](name_app) permissions
+    - [disable](action) [youtube](name_app) permissions
+    - [control](action) [chrome](name_app) permissions
+    - [limit](action) [drive](name_app) permissions
+    - [limit](action) [caixa sabadell](name_app) permissions
+    - [limit](action) [play store](name_app) permissions
+    - [limit](action) [play games](name_app) permissions
+    - [control](action) [whatsapp](name_app) permissions
+    - [limit](action) [telegram](name_app) permissions
+    - [restrict](action) [snapchat](name_app) permissions
+    - [limit](action) [blackplayer](name_app) permissions
+- synonym: enable
+  examples: |
+    - authorize
+    - permit
+    - allow
+    - legalize
+    - turn on
+    - activate
+- synonym: disable
+  examples: |
+    - restrict
+    - limit
+    - turn off
+    - deactivate
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - fine
+    - i'm fine
+    - good
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    - bad
+    - very bad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - who are you?

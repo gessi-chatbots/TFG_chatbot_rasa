@@ -1,0 +1,34 @@
+version: '3.0'
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Notification app
+  steps:
+  - intent: notification_app
+  - action: action_notification
+
+- rule: Data app
+  steps:
+  - intent: restrict_data
+  - action: action_restrict_data  
+
+- rule: Battery Optimization
+  steps:
+  - intent: battery_optimization
+  - action: action_battery_opt  
+
+- rule: Permissions app
+  steps:
+  - intent: permissions_app
+  - action: action_permissions_app  
+  

@@ -1,8 +1,9 @@
 from typing import Any, Text, Dict, List
 
-from rasa_sdk import Action, Tracker
+from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 import random
+from rasa_sdk.types import DomainDict
 
 class checkPackageStatus(Action):
 
@@ -13,7 +14,8 @@ class checkPackageStatus(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        days = random.random(0, 31)
+        days = random.randint(0, 31)
+        print(days)
         if (days < 10):
             dispatcher.utter_message(text="Your order hasn't left yet.")
         elif (days < 20):
@@ -22,4 +24,5 @@ class checkPackageStatus(Action):
             dispatcher.utter_message(text="Your order has just arrived to its destination.")
         
         return []
+
     
