@@ -41,5 +41,5 @@ for i in range(2, len(args)):
 
 os.chdir(path)
 os.system('rasa train')
-os.system('rasa shell')
+os.system('rasa run')
 
