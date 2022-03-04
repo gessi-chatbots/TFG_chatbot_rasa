@@ -32,11 +32,8 @@ for i in range(2, len(args)):
     else: raise Exception("ERROR: wrong optional argument specified")
     
     lines = open(y).readlines()
-    
-    if data:
-        f = open(path + file, "w")
-    else:
-        f = open(path + file, "a")
-    
-    for l in lines: f.write(l)
-    f.close()
+    type = 'w' if data else 'a'
+        
+    with open(path + file, type) as f:
+        for l in lines: f.write(l)
+        f.close()
