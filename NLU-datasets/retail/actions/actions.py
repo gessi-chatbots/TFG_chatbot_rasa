@@ -3,7 +3,6 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 import random
-from rasa_sdk.types import DomainDict
 
 class checkPackageStatus(Action):
 
