@@ -31,9 +31,12 @@ for i in range(2, len(args)):
     elif x.strip() == '-s': file = '/stories.yml'
     else: raise Exception("ERROR: wrong optional argument specified")
     
+    lines = open(y).readlines()
+    
     if data:
-        lines = open(y).readlines()
-        with open(path + file, "w") as f:
-            for l in lines:
-                f.write(l)
-            f.close()
+        f = open(path + file, "w")
+    else:
+        f = open(path + file, "a")
+    
+    for l in lines: f.write(l)
+    f.close()
