@@ -32,34 +32,44 @@ responses:
   utter_submit:
   - text: Perfect! Thank you!
   
-  utter_slot_values:
+  utter_slots_values:
   - text: Hi {first_name} {last_name}! How are you?
+
+  utter_ask_first_name:
+  - text: What is your first name?
+
+  utter_ask_last_name:
+  - text: What is your last name {first_name}?
 
 actions:
 - action_check_package_status
-- validate_name_form
-
-entity:
-- first_name
-- last_name
+- utter_greet
+- utter_slots_values
+- utter_submit
 
 slots:
   first_name:
     type: text
+    influence_conversation: true
     mappings:
-    - type: first_name
-      entity: first_name
+    - type: from_text
+      conditions:
+        - active_loop: name_form
+          requested_slot: first_name
   last_name:
     type: text
+    influence_conversation: true
     mappings:
-    - type: last_name
-      entity: last_name
+    - type: from_text
+      conditions:
+        - active_loop: name_form
+          requested_slot: last_name
 
 forms:
   name_form:
-  required_slots:
-    - first_name
-    - last_name
+    required_slots:
+      - first_name
+      - last_name
   
   
 session_config:

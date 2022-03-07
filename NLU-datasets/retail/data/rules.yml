@@ -9,10 +9,9 @@ rules:
 
 - rule: Activate form
   steps:
-  - intent: greet
-  - action: utter_greet
+  - intent: request_names
   - action: name_form
-  - activate_loop: name_form
+  - active_loop: name_form
 
 - rule: Submit form
   condition: 
@@ -23,4 +22,4 @@ rules:
   - slot_was_set: 
     - requested_slot: null
   - action: utter_submit
-  - action: utter_slot_values
+  - action: utter_slots_values
